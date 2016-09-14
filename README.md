@@ -1,1 +1,1 @@
-# Petrinet_US28simulation
+# Petri net simulation of US28 stimulation
