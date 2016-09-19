@@ -8,12 +8,11 @@ class Models:
     
     def __init__(self):
         pass
-
+    
     #CREATE MODELS
     def creat_model_file(self):
-        
-        #ALL BINARY MODELS
-                models = {
+        #ALL BINARY MODELS: 0-1: US28 -> ROCK; 2-3: US28 -> HGF; 4-5: ROCK -> CTNNBY; 6-7: HGF -> CTNNBY; 8-9-10: CTNNBY -> ROCK; 12-13-14: CTNNBY -> HGF; 15-16-17: CTNNBY -| ROCK; 18-19-20: CTNNBY -| HGF; 21-22-23: ROCK -> HGF; 24-25-26: HGF -> ROCK; 27-28-29: ROCK -| HGF; 30-31-32: HGF -| ROCK
+        models = {
             "model1": [1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
             "model2": [1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0],
             "model3": [1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0],
@@ -97,11 +96,7 @@ class Models:
             "model81": [1,1,1,1,1,1,1,1,0,0,0,0,0,1,1,1,1,1,1,1,0,0,0,0,0,0,1,1,1,1,1,1],
         }
         
-        #DESCRIPTION OF MODELS: 0-1: US28 -> ROCK; 2-3: US28 -> HGF; 4-5: ROCK -> CTNNBY; 6-7: HGF -> CTNNBY;
-        #8-9-10: CTNNBY -> ROCK; 12-13-14: CTNNBY -> HGF; 15-16-17: CTNNBY -| ROCK; 18-19-20: CTNNBY -| HGF;
-        #21-22-23: ROCK -> HGF; 24-25-26: HGF -> ROCK; 27-28-29: ROCK -| HGF; 30-31-32: HGF -| ROCK
-        
-        f = open('Petri_net_models','w')
+        f = open('Petri_net_models,'w')
         sum_total = 0
         for model_name in models.keys():
             model_initial = models[model_name]
@@ -113,7 +108,6 @@ class Models:
             combis = list(itertools.product([1,2], repeat=sum))
             combis.pop(0)
             combi_len = len(combis)
-            print model_name, "has a length of", sum, "and has", combi_len, "different models"
             sum_total = sum_total + combi_len
             
             for combi in combis:
@@ -131,7 +125,6 @@ class Models:
                 f.write('\n')
                 models_param.append(temp)
                 temp = []
-        print "There are", sum_total, "models in total"
         f.close()
 
 
